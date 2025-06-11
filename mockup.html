@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayZone - App Completa</title>
+    <link rel="stylesheet" href="PlayZoneCss.css">
+</head>
+<body>
+    <div class="iphone-frame">
+        <div class="screen">
+            <div class="dynamic-island"></div>
+            
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="menu-dropdown" id="menuDropdown">
+                <div class="menu-item active" onclick="goToScreen(0)">🔐 Iniciar Sesión</div>
+                <div class="menu-item" onclick="goToScreen(1)">📝 Registrarse</div>
+                <div class="menu-item" onclick="goToScreen(2)">🏠 Inicio</div>
+                <div class="menu-item" onclick="goToScreen(3)">🏢 Centros</div>
+                <div class="menu-item" onclick="goToScreen(4)">📅 Calendario</div>
+                <div class="menu-item" onclick="goToScreen(5)">📋 Reservar</div>
+                <div class="menu-item" onclick="goToScreen(6)">👤 Perfil</div>
+                <div class="menu-item" onclick="goToScreen(7)">✅ Confirmación</div>
+            </div>
+            
+            <div class="screen-container">
+                <!-- Pantalla 1: Login -->
+                <div class="screen-slide login-screen active">
+                    <div class="content-area">
+                        <div style="text-align: center; margin-bottom: 40px;">
+                            <div class="logo-container">
+                                <img src="imagenes/PlayZone.png" alt="PlayZone Logo" class="logo-image">
+                            </div>
+                        </div>
+                        
+                        <input type="email" class="input-field" placeholder="Correo electrónico">
+                        <input type="password" class="input-field" placeholder="Contraseña">
+                        
+                        <div class="button primary" style="margin: 20px 0;" onclick="goToScreen(2)">
+                            Iniciar Sesión
+                        </div>
+                        
+                        <div class="button">Continuar con Apple</div>
+                        <div class="button">Continuar con Google</div>
+                        
+                        <p style="text-align: center; color: rgba(255,255,255,0.8); margin-top: 20px;">
+                            ¿No tienes cuenta? <span style="color: white; font-weight: bold; cursor: pointer;" onclick="goToScreen(1)">Regístrate</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Pantalla 2: Registro -->
+                <div class="screen-slide register-screen">
+                    <div class="content-area">
+                        <div style="text-align: center; margin-bottom: 30px;">
+                            <h1 style="color: white; font-size: 28px; margin-bottom: 10px;">Crear Cuenta</h1>
+                            <p style="color: rgba(255,255,255,0.8);">Únete a nuestra comunidad PlayZone</p>
+                        </div>
+                        
+                        <input type="text" class="input-field" placeholder="Nombre completo">
+                        <input type="email" class="input-field" placeholder="Correo electrónico">
+                        <input type="tel" class="input-field" placeholder="Teléfono">
+                        <input type="password" class="input-field" placeholder="Contraseña">
+                        <input type="password" class="input-field" placeholder="Confirmar contraseña">
+                        
+                        <div style="display: flex; align-items: center; margin: 20px 0; color: rgba(255,255,255,0.8);">
+                            <input type="checkbox" style="margin-right: 10px;">
+                            <span style="font-size: 14px;">Acepto los términos y condiciones</span>
+                        </div>
+                        
+                        <div class="button primary" style="margin: 20px 0;" onclick="goToScreen(2)">
+                            Crear Cuenta
+                        </div>
+                        
+                        <div class="button">Registrarse con Apple</div>
+                        <div class="button">Registrarse con Google</div>
+                        
+                        <p style="text-align: center; color: rgba(255,255,255,0.8); margin-top: 20px;">
+                            ¿Ya tienes cuenta? <span style="color: white; font-weight: bold; cursor: pointer;" onclick="goToScreen(0)">Inicia sesión</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Pantalla 3: Home -->
+                <div class="screen-slide home-screen">
+                    <div class="content-area">
+                        <div class="card">
+                            <h3 style="color: white; margin-bottom: 10px;">¡Hola, María! 👋</h3>
+                            <p style="color: rgba(255,255,255,0.8);">¿Qué te gustaría hacer hoy en PlayZone?</p>
+                        </div>
+                        
+                        <div class="facility-grid">
+                            <div class="facility-card" onclick="goToScreen(3)">
+                                <div class="facility-icon">🏊‍♀️</div>
+                                <div>Piscina</div>
+                            </div>
+                            <div class="facility-card" onclick="goToScreen(3)">
+                                <div class="facility-icon">🏋️‍♂️</div>
+                                <div>Gimnasio</div>
+                            </div>
+                            <div class="facility-card" onclick="goToScreen(3)">
+                                <div class="facility-icon">🎾</div>
+                                <div>Tenis</div>
+                            </div>
+                            <div class="facility-card" onclick="goToScreen(3)">
+                                <div class="facility-icon">⚽</div>
+                                <div>Fútbol</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card" style="margin-top: 30px;">
+                            <h4 style="color: white; margin-bottom: 10px;">Próximas Reservas</h4>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 14px;">🏊‍♀️ Piscina - Mañana 10:00 AM</p>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 14px;">🎾 Tenis - Viernes 3:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantalla 4: Centros -->
+                <div class="screen-slide centers-screen">
+                    <div class="content-area">
+                        <h2 style="color: white; text-align: center; margin-bottom: 30px; font-size: 24px;">🏢 Centros PlayZone</h2>
+                        
+                        <div class="card">
+                            <h3 style="color: white; margin-bottom: 10px;">🏊 PlayZone Aquático Norte</h3>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 14px; margin-bottom: 10px;">📍 Av. Principal 123</p>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 14px;">⭐ 4.8 • 📍 2.3 km</p>
+                            <div class="button" style="margin-top: 15px;" onclick="goToScreen(4)">Ver Disponibilidad</div>
+                        </div>
+                        
+                        <div class="card">
+                            <h3 style="color: white; margin-bottom: 10px;">🏋️ PlayZone Gym & Spa</h3>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 14px; margin-bottom: 10px;">📍 Calle Fitness 456</p>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 14px;">⭐ 4.6 • 📍 1.8 km</p>
+                            <div class="button" style="margin-top: 15px;" onclick="goToScreen(4)">Ver Disponibilidad</div>
+                        </div>
+                        
+                        <div class="card">
+                            <h3 style="color: white; margin-bottom: 10px;">🎾 PlayZone Club Deportivo</h3>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 14px; margin-bottom: 10px;">📍 Zona Sur, Sector 7</p>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 14px;">⭐ 4.9 • 📍 3.1 km</p>
+                            <div class="button" style="margin-top: 15px;" onclick="goToScreen(4)">Ver Disponibilidad</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantalla 5: Calendario -->
+                <div class="screen-slide calendar-screen">
+                    <div class="content-area">
+                        <div class="card">
+                            <h3 style="color: white; margin-bottom: 15px; text-align: center;">📅 Seleccionar Fecha</h3>
+                            <h4 style="color: white; margin-bottom: 15px; text-align: center;">Junio 2025</h4>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-bottom: 10px;">
+                                <div style="color: white; text-align: center; font-size: 12px; padding: 5px; font-weight: 600;">L</div>
+                                <div style="color: white; text-align: center; font-size: 12px; padding: 5px; font-weight: 600;">M</div>
+                                <div style="color: white; text-align: center; font-size: 12px; padding: 5px; font-weight: 600;">X</div>
+                                <div style="color: white; text-align: center; font-size: 12px; padding: 5px; font-weight: 600;">J</div>
+                                <div style="color: white; text-align: center; font-size: 12px; padding: 5px; font-weight: 600;">V</div>
+                                <div style="color: white; text-align: center; font-size: 12px; padding: 5px; font-weight: 600;">S</div>
+                                <div style="color: white; text-align: center; font-size: 12px; padding: 5px; font-weight: 600;">D</div>
+                            </div>
+                            
+                            <div class="calendar-grid">
+                                <div class="calendar-day" onclick="selectDate(this)">1</div>
+                                <div class="calendar-day" onclick="selectDate(this)">2</div>
+                                <div class="calendar-day" onclick="selectDate(this)">3</div>
+                                <div class="calendar-day" onclick="selectDate(this)">4</div>
+                                <div class="calendar-day selected" onclick="selectDate(this)">5</div>
+                                <div class="calendar-day" onclick="selectDate(this)">6</div>
+                                <div class="calendar-day" onclick="selectDate(this)">7</div>
+                                <div class="calendar-day" onclick="selectDate(this)">8</div>
+                                <div class="calendar-day" onclick="selectDate(this)">9</div>
+                                <div class="calendar-day" onclick="selectDate(this)">10</div>
+                                <div class="calendar-day" onclick="selectDate(this)">11</div>
+                                <div class="calendar-day" onclick="selectDate(this)">12</div>
+                                <div class="calendar-day" onclick="selectDate(this)">13</div>
+                                <div class="calendar-day" onclick="selectDate(this)">14</div>
+                                <div class="calendar-day" onclick="selectDate(this)">15</div>
+                                <div class="calendar-day" onclick="selectDate(this)">16</div>
+                                <div class="calendar-day" onclick="selectDate(this)">17</div>
+                                <div class="calendar-day" onclick="selectDate(this)">18</div>
+                                <div class="calendar-day" onclick="selectDate(this)">19</div>
+                                <div class="calendar-day" onclick="selectDate(this)">20</div>
+                                <div class="calendar-day" onclick="selectDate(this)">21</div>
+                            </div>
+                        </div>
+                        
+                        <div class="button primary" style="margin-top: 20px;" onclick="goToScreen(5)">
+                            Continuar con: 5 de Junio
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantalla 6: Reserva -->
+                <div class="screen-slide booking-screen">
+                    <div class="content-area">
+                        <h2 style="color: white; text-align: center; margin-bottom: 30px; font-size: 24px;">📋 Nueva Reserva</h2>
+                        
+                        <div class="card">
+                            <h3 style="color: white; margin-bottom: 15px;">🏊 PlayZone Aquático Norte</h3>
+                            <p style="color: rgba(255,255,255,0.8); margin-bottom: 10px;">📅 5 de Junio, 2025</p>
+                            <p style="color: rgba(255,255,255,0.8); margin-bottom: 20px;">Selecciona la actividad:</p>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <div class="button" onclick="selectActivity(this)">🏊‍♀️ Piscina Principal - $15/h</div>
+                                <div class="button" onclick="selectActivity(this)">🏊‍♂️ Piscina Olímpica - $20/h</div>
+                                <div class="button" onclick="selectActivity(this)">👶 Piscina Infantil - $10/h</div>
+                                <div class="button" onclick="selectActivity(this)">🧘‍♀️ Aqua Aeróbicos - $12/h</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 style="color: white; margin-bottom: 15px;">⏰ Horarios Disponibles</h4>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div class="button" style="font-size: 14px; padding: 10px;" onclick="selectTime(this)">9:00 AM</div>
+                                <div class="button primary" style="font-size: 14px; padding: 10px;" onclick="selectTime(this)">10:00 AM</div>
+                                <div class="button" style="font-size: 14px; padding: 10px;" onclick="selectTime(this)">11:00 AM</div>
+                                <div class="button" style="font-size: 14px; padding: 10px;" onclick="selectTime(this)">2:00 PM</div>
+                            </div>
+                        </div>
+                        
+                        <div class="button primary" style="margin-top: 20px;" onclick="goToScreen(7)">
+                            Confirmar Reserva - $15.00
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantalla 7: Perfil -->
+                <div class="screen-slide profile-screen">
+                    <div class="content-area">
+                        <div class="card" style="text-align: center;">
+                            <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.3); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 40px; backdrop-filter: blur(10px);">👩‍💼</div>
+                            <h3 style="color: white; margin-bottom: 5px;">María González</h3>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 14px;">maria@email.com</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 style="color: white; margin-bottom: 15px;">💎 Membresía PlayZone Premium</h4>
+                            <p style="color: rgba(255,255,255,0.8); margin-bottom: 10px;">✅ Acceso ilimitado a todos los centros</p>
+                            <p style="color: rgba(255,255,255,0.8); margin-bottom: 10px;">✅ Descuentos especiales</p>
+                            <p style="color: rgba(255,255,255,0.8);">✅ Invitados gratis</p>
+                        </div>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="button">📊 Mis Estadísticas</div>
+                            <div class="button">📅 Historial de Reservas</div>
+                            <div class="button">💳 Métodos de Pago</div>
+                            <div class="button">⚙️ Configuración</div>
+                            <div class="button">📞 Soporte</div>
+                            <div class="button" style="background: rgba(255, 59, 48, 0.3); border-color: rgba(255, 59, 48, 0.5);">🚪 Cerrar Sesión</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantalla 8: Confirmación -->
+                <div class="screen-slide confirmation-screen">
+                    <div class="content-area">
+                        <div class="card" style="text-align: center;">
+                            <div style="width: 100px; height: 100px; background: rgba(76, 175, 80, 0.3); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 50px; backdrop-filter: blur(10px);">✅</div>
+                            <h2 style="color: white; margin-bottom: 15px;">¡Reserva Confirmada!</h2>
+                            <p style="color: rgba(255,255,255,0.8);">Tu reserva ha sido procesada exitosamente</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 style="color: white; margin-bottom: 15px;">📋 Detalles de tu Reserva</h4>
+                            <p style="color: rgba(255,255,255,0.8); margin-bottom: 8px;"><strong>🏊‍♀️ Actividad:</strong> Piscina Principal</p>
+                            <p style="color: rgba(255,255,255,0.8); margin-bottom: 8px;"><strong>🏢 Centro:</strong> PlayZone Aquático Norte</p>
+                            <p style="color: rgba(255,255,255,0.8); margin-bottom: 8px;"><strong>📅 Fecha:</strong> 5 de Junio, 2025</p>
+                            <p style="color: rgba(255,255,255,0.8); margin-bottom: 8px;"><strong>⏰ Hora:</strong> 10:00 AM - 11:00 AM</p>
+                            <p style="color: rgba(255,255,255,0.8); margin-bottom: 8px;"><strong>💰 Total:</strong> $15.00</p>
+                            <p style="color: rgba(255,255,255,0.8);"><strong>🎫 Código:</strong> PZ-2025-0605-001</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 style="color: white; margin-bottom: 15px;">Código QR</h4>
+                            <div style="width: 120px; height: 120px; background: white; border-radius: 10px; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 60px;"></div>
+                            <p style="color: rgba(255,255,255,0.8); text-align: center; margin-top: 10px; font-size: 14px;">Presenta este código en recepción</p>
+                        </div>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+                            <div class="button primary" onclick="goToScreen(2)">🏠 Volver al Inicio</div>
+                            <div class="button">📧 Enviar por Email</div>
+                            <div class="button">📅 Añadir al Calendario</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bottom-nav">
+                <div class="nav-item" onclick="goToScreen(2)">
+                    <div class="nav-icon">🏠</div>
+                    <div class="nav-label">Inicio</div>
+                </div>
+                <div class="nav-item" onclick="goToScreen(3)">
+                    <div class="nav-icon">🏢</div>
+                    <div class="nav-label">Centros</div>
+                </div>
+                <div class="nav-item" onclick="goToScreen(4)">
+                    <div class="nav-icon">📅</div>
+                    <div class="nav-label">Calendario</div>
+                </div>
+                <div class="nav-item" onclick="goToScreen(5)">
+                    <div class="nav-icon">📋</div>
+                    <div class="nav-label">Reservar</div>
+                </div>
+                <div class="nav-item active" onclick="goToScreen(6)">
+                    <div class="nav-icon">👤</div>
+                    <div class="nav-label">Perfil</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentScreen = 0;
+        const totalScreens = 8;
+
+        function goToScreen(screenIndex) {
+            const slides = document.querySelectorAll('.screen-slide');
+            const navItems = document.querySelectorAll('.nav-item');
+            const menuItems = document.querySelectorAll('.menu-item');
+            
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev', 'next');
+                if (index === screenIndex) {
+                    slide.classList.add('active');
+                } else if (index < screenIndex) {
+                    slide.classList.add('prev');
+                } else {
+                    slide.classList.add('next');
+                }
+            });
+
+            navItems.forEach((item, index) => {
+                item.classList.remove('active');
+                if (index === screenIndex - 2) {
+                    item.classList.add('active');
+                }
+            });
+
+            menuItems.forEach((item, index) => {
+                item.classList.remove('active');
+                if (index === screenIndex) {
+                    item.classList.add('active');
+                }
+            });
+
+            currentScreen = screenIndex;
+            
+            // Cerrar menú después de navegar
+            document.getElementById('menuDropdown').classList.remove('active');
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menuDropdown');
+            menu.classList.toggle('active');
+        }
+
+        function selectDate(element) {
+            document.querySelectorAll('.calendar-day').forEach(day => {
+                day.classList.remove('selected');
+            });
+            element.classList.add('selected');
+        }
+
+        function selectActivity(element) {
+            document.querySelectorAll('.screen-slide.booking-screen .card:first-of-type .button').forEach(btn => {
+                btn.classList.remove('primary');
+            });
+            element.classList.add('primary');
+        }
+
+        function selectTime(element) {
+            document.querySelectorAll('.screen-slide.booking-screen .card:last-of-type .button').forEach(btn => {
+                btn.classList.remove('primary');
+            });
+            element.classList.add('primary');
+        }
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('menuDropdown');
+            const toggle = document.querySelector('.menu-toggle');
+            
+            if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // Navegación con teclado
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft' && currentScreen > 0) {
+                goToScreen(currentScreen - 1);
+            } else if (event.key === 'ArrowRight' && currentScreen < totalScreens - 1) {
+                goToScreen(currentScreen + 1);
+            }
+        });
+    </script>
+</body>
+</html>
